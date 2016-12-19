@@ -18,7 +18,7 @@ class Publicacion(models.Model):
 	fecha = models.DateField()
 	foto = ImageField(upload_to=utils.get_file_path, blank=True, null=True)
 	archivo = models.FileField(upload_to=utils.get_file_path, blank=True, null=True)
-	categoria= TagField(help_text='Separar elementos con "," ', 
+	categoria= TagField('tags', help_text='Separar elementos con "," ', 
                                     null=True, blank=True)
 	fileDir = 'publicaciones/'
 

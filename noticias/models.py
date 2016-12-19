@@ -21,7 +21,7 @@ class Noticias(models.Model):
     credito_foto = models.CharField(max_length=250, null=True, blank=True)
     contenido = RichTextField()
     destacado = models.BooleanField()
-    categoria= TagField(help_text='Separar elementos con "," ',
+    categoria= TagField('tags', help_text='Separar elementos con "," ',
                                     null=True, blank=True)
 
     fileDir = 'noticias/'
