@@ -589,8 +589,8 @@ var SEMICOLON = SEMICOLON || {};
 
 				if( !animationIn ) { animationIn = 'fadeIn'; }
 				if( !animationOut ) { animationOut = 'fadeOut'; }
-				if( !durationIn ) { durationIn = 1500; }
-				if( !durationOut ) { durationOut = 800; }
+				if( !durationIn ) { durationIn = 800; }
+				if( !durationOut ) { durationOut =0; }
 				
 
 				if( !loaderTimeOut ) {
@@ -599,46 +599,8 @@ var SEMICOLON = SEMICOLON || {};
 					loaderTimeOut = Number(loaderTimeOut);
 				}
 
-				if( loaderColor ) {
-					if( loaderColor == 'theme' ) {
-						loaderBgClass = ' bgcolor';
-						loaderBorderClass = ' border-color';
-						loaderBgClass2 = ' class="bgcolor"';
-						loaderBorderClass2 = ' class="border-color"';
-					} else {
-						loaderBgStyle = ' style="background-color:'+ loaderColor +';"';
-						loaderBorderStyle = ' style="border-color:'+ loaderColor +';"';
-					}
-					loaderStyleHtml = '<div class="css3-spinner-bounce1'+ loaderBgClass +'"'+ loaderBgStyle +'></div><div class="css3-spinner-bounce2'+ loaderBgClass +'"'+ loaderBgStyle +'></div><div class="css3-spinner-bounce3'+ loaderBgClass +'"'+ loaderBgStyle +'></div>'
-				}
 
-				if( loaderStyle == '2' ) {
-					loaderStyleHtml = '<div class="css3-spinner-flipper'+ loaderBgClass +'"'+ loaderBgStyle +'></div>';
-				} else if( loaderStyle == '3' ) {
-					loaderStyleHtml = '<div class="css3-spinner-double-bounce1'+ loaderBgClass +'"'+ loaderBgStyle +'></div><div class="css3-spinner-double-bounce2'+ loaderBgClass +'"'+ loaderBgStyle +'></div>';
-				} else if( loaderStyle == '4' ) {
-					loaderStyleHtml = '<div class="css3-spinner-rect1'+ loaderBgClass +'"'+ loaderBgStyle +'></div><div class="css3-spinner-rect2'+ loaderBgClass +'"'+ loaderBgStyle +'></div><div class="css3-spinner-rect3'+ loaderBgClass +'"'+ loaderBgStyle +'></div><div class="css3-spinner-rect4'+ loaderBgClass +'"'+ loaderBgStyle +'></div><div class="css3-spinner-rect5'+ loaderBgClass +'"'+ loaderBgStyle +'></div>';
-				} else if( loaderStyle == '5' ) {
-					loaderStyleHtml = '<div class="css3-spinner-cube1'+ loaderBgClass +'"'+ loaderBgStyle +'></div><div class="css3-spinner-cube2'+ loaderBgClass +'"'+ loaderBgStyle +'></div>';
-				} else if( loaderStyle == '6' ) {
-					loaderStyleHtml = '<div class="css3-spinner-scaler'+ loaderBgClass +'"'+ loaderBgStyle +'></div>';
-				} else if( loaderStyle == '7' ) {
-					loaderStyleHtml = '<div class="css3-spinner-grid-pulse"><div'+ loaderBgClass2 + loaderBgStyle +'></div><div'+ loaderBgClass2 + loaderBgStyle +'></div><div'+ loaderBgClass2 + loaderBgStyle +'></div><div'+ loaderBgClass2 + loaderBgStyle +'></div><div'+ loaderBgClass2 + loaderBgStyle +'></div><div'+ loaderBgClass2 + loaderBgStyle +'></div><div'+ loaderBgClass2 + loaderBgStyle +'></div><div'+ loaderBgClass2 + loaderBgStyle +'></div><div'+ loaderBgClass2 + loaderBgStyle +'></div></div>';
-				} else if( loaderStyle == '8' ) {
-					loaderStyleHtml = '<div class="css3-spinner-clip-rotate"><div'+ loaderBorderClass2 + loaderBorderStyle +'></div></div>';
-				} else if( loaderStyle == '9' ) {
-					loaderStyleHtml = '<div class="css3-spinner-ball-rotate"><div'+ loaderBgClass2 + loaderBgStyle +'></div><div'+ loaderBgClass2 + loaderBgStyle +'></div><div'+ loaderBgClass2 + loaderBgStyle +'></div></div>';
-				} else if( loaderStyle == '10' ) {
-					loaderStyleHtml = '<div class="css3-spinner-zig-zag"><div'+ loaderBgClass2 + loaderBgStyle +'></div><div'+ loaderBgClass2 + loaderBgStyle +'></div></div>';
-				} else if( loaderStyle == '11' ) {
-					loaderStyleHtml = '<div class="css3-spinner-triangle-path"><div'+ loaderBgClass2 + loaderBgStyle +'></div><div'+ loaderBgClass2 + loaderBgStyle +'></div><div'+ loaderBgClass2 + loaderBgStyle +'></div></div>';
-				} else if( loaderStyle == '12' ) {
-					loaderStyleHtml = '<div class="css3-spinner-ball-scale-multiple"><div'+ loaderBgClass2 + loaderBgStyle +'></div><div'+ loaderBgClass2 + loaderBgStyle +'></div><div'+ loaderBgClass2 + loaderBgStyle +'></div></div>';
-				} else if( loaderStyle == '13' ) {
-					loaderStyleHtml = '<div class="css3-spinner-ball-pulse-sync"><div'+ loaderBgClass2 + loaderBgStyle +'></div><div'+ loaderBgClass2 + loaderBgStyle +'></div><div'+ loaderBgClass2 + loaderBgStyle +'></div></div>';
-				} else if( loaderStyle == '14' ) {
-					loaderStyleHtml = '<div class="css3-spinner-scale-ripple"><div'+ loaderBorderClass2 + loaderBorderStyle +'></div><div'+ loaderBorderClass2 + loaderBorderStyle +'></div><div'+ loaderBorderClass2 + loaderBorderStyle +'></div></div>';
-				}
+
 
 				$wrapper.animsition({
 					inClass : animationIn,
