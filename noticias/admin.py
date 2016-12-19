@@ -41,6 +41,6 @@ class FlatPageAdmin(FlatPageAdminOld):
 admin.site.unregister(FlatPage)
 admin.site.register(FlatPage, FlatPageAdmin)
 
-admin.site.register(Portada,PortadaAdmin)
+#admin.site.register(Portada,PortadaAdmin)
 admin.site.register(FotosPortadas, fotoAdmin)
 admin.site.register(Noticias, NoticiasAdmin)
