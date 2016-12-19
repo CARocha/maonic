@@ -3,12 +3,14 @@ from django.template import RequestContext
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from .models import Evento
 from noticias.models import Noticias
+from publicaciones.models import Publicacion
 
 def lista_evento(request):
 	eventos = Evento.objects.order_by('-id')
 
 	ultimas_noticias = Noticias.objects.order_by('-id')[:4]
-    
+	publicaciones = Publicacion.objects.order_by('-id')[:4]
+
 	paginator = Paginator(eventos, 4)
 
 	try:
@@ -21,5 +23,5 @@ def lista_evento(request):
 	except  (EmptyPage, InvalidPage):
 	    objetos = paginator.page(paginator.num_pages)
 
-	return render_to_response('eventos/eventos.html', locals(), 
+	return render_to_response('eventos/eventos.html', locals(),
                                 context_instance=RequestContext(request))
