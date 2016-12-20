@@ -15,6 +15,7 @@ from propiedades.models import *
 from credito.models import *
 from seguridad.models import *
 from riesgo.models import *
+from modelo_familia.models import *
 
 from autocomplete_admin import FkAutocompleteAdmin
 #Organizacion
@@ -28,18 +29,18 @@ class TenenciaInline(admin.TabularInline):
     model = Tenencia
     extra = 1
     max_num = 1
-    
+
 #Uso de tierra
 class UsoTierraInline(admin.TabularInline):
     model = UsoTierra
     extra = 1
-    max_num = 8 
+    max_num = 8
 
 #Animales
 class AnimalesCantidadInline(admin.TabularInline):
     model = AnimalesCantidad
     extra = 1
-    
+
 class AnimalesFincaInline(admin.TabularInline):
     model = AnimalesFinca
     extra = 1
@@ -58,7 +59,7 @@ class OpcionesManejoInline(admin.TabularInline):
 class UsoSemillaInline(admin.TabularInline):
     model = UsoSemilla
     extra = 1
-        
+
 #Suelo
 class SueloInline(admin.TabularInline):
     model = Suelo
@@ -71,12 +72,12 @@ class ManejoSueloInline(admin.TabularInline):
               'practica','obra']
     extra = 1
     max_num = 1
- 
+
 #Inversiones
 class InversionesInline(admin.TabularInline):
     model = Inversion
     extra = 1
-    
+
 
 #Ingreso familiar
 class IngresoFamiliarInline(admin.TabularInline):
@@ -87,35 +88,35 @@ class IngresoFamiliarInline(admin.TabularInline):
 class OtrosIngresosInline(admin.TabularInline):
     model = OtrosIngresos
     extra = 1
-    
+
 #Propiedades y bienes
 class TipoCasaInline(admin.TabularInline):
     model = TipoCasa
     extra = 1
     max_num = 1
     can_delete = False
-    
+
 class DetalleCasaInline(admin.TabularInline):
     model = DetalleCasa
     extra = 1
     max_num = 1
     can_delete = False
-    
+
 class PropiedadesInline(admin.TabularInline):
     model = Propiedades
     extra = 1
     can_delete = False
-    
+
 class InfraestructuraInline(admin.TabularInline):
     model = Infraestructura
     extra = 1
     can_delete = False
-    
+
 class HerramientasInline(admin.TabularInline):
     model = Herramientas
     extra = 1
     can_delete = False
-    
+
 class TransporteInline(admin.TabularInline):
     model = Transporte
     extra = 1
@@ -126,14 +127,14 @@ class CreditoInline(admin.TabularInline):
     fields = ['recibe','desde','quien_credito','ocupa_credito',
               'satisfaccion','dia']
     extra = 1
-    max_num = 1  
-    
+    max_num = 1
+
 #Seguridad alimentaria
 class SeguridadInline(admin.TabularInline):
     model = Seguridad
     extra = 1
-    can_delete = False 
-    
+    can_delete = False
+
 #Riesgos que hacen vulnerables las fincas
 class VulnerableInline(admin.TabularInline):
     model = Vulnerable
@@ -149,23 +150,35 @@ class CertificacionInline(admin.TabularInline):
     model = Certificacion
     extra = 1
     max_num = 1
-             
+
+class InventarioForestalInline(admin.TabularInline):
+    model = InventarioForestal
+    extra = 1
+
+class InsumosUtilizadosInline(admin.TabularInline):
+    model = InsumosUtilizados
+    extra = 1
+
+class EgresoFamiliarInline(admin.TabularInline):
+    model = EgresoFamiliar
+    extra = 1
+
 class EncuestaAdmin(FkAutocompleteAdmin):
     def save_model(self, request, obj, form, change):
         obj.usuario = request.user
         obj.save()
-        
+
     def queryset(self, request):
         qs = super(EncuestaAdmin, self).queryset(request)
         if request.user.is_superuser:
             return qs
         return qs.filter(usuario=request.user)
-        
+
     save_on_top = True
     actions_on_top = True
     exclude = ('usuario',)
     #raw_id_fields = ("productor",)
-    related_search_fields = { 
+    related_search_fields = {
                               'productor':('nombre',)
                               #'productor' :{'search': ('nombre',), 'related': ('nombre',)},
                             }
@@ -174,6 +187,7 @@ class EncuestaAdmin(FkAutocompleteAdmin):
                InversionesInline,IngresoFamiliarInline,
                OtrosIngresosInline,PropiedadesInline,
                InfraestructuraInline,HerramientasInline,TransporteInline,
+               InventarioForestalInline,InsumosUtilizadosInline,EgresoFamiliarInline
               ]
     list_display = ('productor','departamentos','finca','fecha',)
     #list_filter = ['productor__departamento__municipio']
@@ -183,7 +197,7 @@ class EncuestaAdmin(FkAutocompleteAdmin):
         css = {
             'all': ('css/custom_admin.css',)
         }
-    
+
 admin.site.register(Encuesta, EncuestaAdmin)
 admin.site.register(Recolector)
 admin.site.register(OrgGremiales)
@@ -228,3 +242,6 @@ admin.site.register(Graves)
 admin.site.register(PreguntaRiesgo)
 admin.site.register(ManejoAgro)
 admin.site.register(TipoCertificacion)
+admin.site.register(Arboles)
+admin.site.register(UsoInsumos)
+admin.site.register(ItemsFamiliar)

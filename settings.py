@@ -129,6 +129,7 @@ INSTALLED_APPS = (
     'maonic.credito',
     'maonic.seguridad',
     'maonic.riesgo',
+    'maonic.modelo_familia',
 )
 
 ACCOUNT_ACTIVATION_DAYS = 3
@@ -153,7 +154,7 @@ CKEDITOR_CONFIGS = {
         'height': 300,
         'width': 650,
         'toolbar': [
-            [ 
+            [
               'Undo', 'Redo',
               '-', 'Bold', 'Italic', 'Underline',
               '-','JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock',
