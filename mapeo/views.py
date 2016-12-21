@@ -25,8 +25,8 @@ def index(request):
     e_financiera = Financiera.objects.all().count()
     org_publicas = OrgPublica.objects.all().count()
     noticias = Noticias.objects.order_by('-id')[:4]
-    publicaciones = Publicacion.objects.order_by('-id')[:4]
-    eventos = Evento.objects.order_by('-id')[:4]
+    publicaciones = Publicacion.objects.order_by('-id')[:6]
+    eventos = Evento.objects.order_by('-id')[:5]
 
     return direct_to_template(request, 'index.html', locals())
 
@@ -134,16 +134,16 @@ def formulario(request):
                 if key in form.cleaned_data and form.cleaned_data[key] == 'on':
                     lista_modelos.append(key)
 
-            request.session['lista_modelos'] = lista_modelos           
+            request.session['lista_modelos'] = lista_modelos
 
             for coso in ('semillas', 'materia_procesada', 'buenas_practicas',
                     'arboles', 'cultivos', 'animales',
                     'tipo_organizacion', 'certificacion', 'area_trabajo'):
                 if coso in form.cleaned_data:
                     request.session[coso] = form.cleaned_data[coso]
-                                
+
             request.session['activo'] = True
-            return HttpResponseRedirect('/mapeo/mapa')            
+            return HttpResponseRedirect('/mapeo/mapa')
     else:
         form = ProductoresForm()
 
@@ -190,8 +190,8 @@ def _get_params(session):
             if session[key] != []:
                 params[param_key] = session[key]
         except:
-            pass                             
-        
+            pass
+
     return params
 
 def _get_model(model, session=None):
@@ -264,7 +264,7 @@ def territorio(request, id=None):
                                 ComProducto.objects.all().count() + \
                                 Certificadora.objects.all().count() + \
                                 Financiera.objects.all().count() + \
-                                OrgPublica.objects.all().count() 
+                                OrgPublica.objects.all().count()
             dpto="Todo el pais"
         else:
             cantidad_actores = Familia.objects.filter(municipio__departamento__id = id).count() + \
@@ -275,7 +275,7 @@ def territorio(request, id=None):
                                 ComProducto.objects.filter(municipio__departamento__id = id).count() + \
                                 Certificadora.objects.filter(municipio__departamento__id = id).count() + \
                                 Financiera.objects.filter(municipio__departamento__id = id).count() + \
-                                OrgPublica.objects.filter(municipio__departamento__id = id).count() 
+                                OrgPublica.objects.filter(municipio__departamento__id = id).count()
             dpto = Departamento.objects.get(pk=id)
         dicc = {'lista_modelos': lista_modelos,
             'familia': 0,
