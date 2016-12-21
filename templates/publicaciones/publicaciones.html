@@ -39,10 +39,10 @@
                         <div class="ipost clearfix">
                             <div class="entry-image">
                                 {% thumbnail obj.foto "219x153" crop="center" as im %}
-                                    <a href="#"><img class="image_fade" src="/files/{{im}}" alt="Image"></a>
+                                    <a href="/files/{{obj.archivo}}"><img class="image_fade" src="/files/{{im}}" alt="Image"></a>
                                 {% endthumbnail %}
                             </div>
-                            
+
                             <a href="/files/{{obj.archivo}}" class="descargar btn"><span class="fa fa-download"> Descargar</span></a>
                             <div class="entry-title">
                                 {{obj.titulo|truncatewords:4}}
@@ -52,7 +52,7 @@
                                 <li><i class="icon-calendar3"></i>{{obj.fecha|date:"d F Y"}}</li>
                             </ul>
                             <br>
-                            
+
                         </div>
                     </div>
                 {% empty %}
@@ -80,7 +80,7 @@
                                 </div>
                                 <ul class="entry-meta">
                                     <li>{{obj.fecha}}</li>
-                                    
+
                                 </ul>
                             </div>
                             <a href="{{obj.get_absolute_url}}" class="more-link">Leer Nota...</a>
@@ -142,11 +142,9 @@
 
     </section><!-- #content end -->
 
-    
-
-{% endblock contenido %} 
 
 
+{% endblock contenido %}
 
 
 
@@ -160,7 +158,9 @@
 
 
 
-<!-- 
+
+
+<!--
 <div class="row">
 <div class="large-12 columns">
 <div class="large-8 columns">

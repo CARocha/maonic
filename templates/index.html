@@ -4,7 +4,7 @@
 {% load cropping %}
 {% block extra_js %}
 	<script type="text/javascript">
-		
+
 	</script>
 {% endblock extra_js %}
 {% block contenido %}
@@ -234,7 +234,7 @@
 								<div class="ipost clearfix">
 									<div class="entry-image">
 										{% thumbnail obj.foto "218x153" crop="center" as im %}
-											<a href="#"><img class="image_fade" src="/files/{{im}}" alt="Image"></a>
+											<img class="image_fade" src="/files/{{im}}" alt="Image">
 										{% endthumbnail %}
 									</div>
 
