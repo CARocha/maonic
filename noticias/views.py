@@ -12,7 +12,7 @@ def lista_noticias(request):
     eventos = Evento.objects.order_by('-id')[:4]
     noticia = Noticias.objects.order_by('-id')
 
-    paginator = Paginator(noticia, 5)
+    paginator = Paginator(noticia, 6)
 
     try:
         page = int(request.GET.get('page', '1'))

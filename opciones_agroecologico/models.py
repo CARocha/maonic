@@ -24,11 +24,11 @@ class OpcionesManejo(models.Model):
     nivel = models.IntegerField('Nivel de conocimiento', choices=CHOICE_NIVEL_CONOCIMIENTO)
     menor_escala = models.IntegerField('Han experimentado en pequeña escala', choices=CHOICE_OPCION)
     mayor_escala = models.IntegerField('Han experimentado en mayor escala', choices=CHOICE_OPCION)
-    volumen = models.FloatField('Qué área, número o volumen')
+    #volumen = models.FloatField('Qué área, número o volumen')
     encuesta = models.ForeignKey(Encuesta)
     
     def __unicode__(self):
         return u'%s' % self.uso.nombre
     
     class Meta:
-        verbose_name_plural = "Opciones de manejo"
+        verbose_name_plural = "Opciones de manejo del sistema"

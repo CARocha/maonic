@@ -14,7 +14,7 @@ class FuenteInversion(models.Model):
     nombre = models.CharField(max_length=200)
     def __unicode__(self):
         return self.nombre
-       
+
 class Inversion(models.Model):
     cultivo = models.ForeignKey(CultivosInversion)
     area = models.FloatField('Area en Mz')
@@ -25,10 +25,12 @@ class Inversion(models.Model):
     terreno = models.FloatField('Preparación de terreno C$')
     cosecha = models.FloatField('Cosesha y procesamiento C$')
     fuente = models.ForeignKey(FuenteInversion)
+    inversion = models.FloatField('Inversion en C$', null=True, blank=True)
+    mantenimiento = models.FloatField('Mantenimiento en C$', null=True, blank=True)
     encuesta = models.ForeignKey(Encuesta)
-    
+
     def __unicode__(self):
         return self.cultivo.nombre
-        
+
     class Meta:
         verbose_name_plural = "Inversiones en la finca"
